@@ -98,3 +98,21 @@ project setup and testinig instructions.
 2. Run npm install.
 3. Configure environment variables in .env.
 4. Start the backend server using npm run dev.
+
+# Backend Documentation
+
+## Technologies
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
+
+## Setup
+1. Install Node.js.
+2. Run `npm install` inside the backend folder.
+3. Configure the required environment variables in `.env`.
+4. Start the backend using the script defined in `package.json`.
+
+## API
+The backend provides API endpoints for user authentication,
+video management, channels, and comments.
