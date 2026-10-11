@@ -91,3 +91,10 @@ project setup and testinig instructions.
 2. Run npm install.
 3. Configure environment variables in .env.
 4. Start the backend server using npm run dev.
+
+## Backend Setup
+
+1. Open the backend folder.
+2. Run npm install.
+3. Configure environment variables in .env.
+4. Start the backend server using npm run dev.
