@@ -84,3 +84,10 @@ See [`docs/TESTING_CHECKLIST.md`](docs/TESTING_CHECKLIST.md) for manual tests. B
 
 This project is a starter implementation for learning and must be run and tested in your own environment before submission. Verify video URLs and MongoDB configuration locally.
 project setup and testinig instructions.
+
+## Backend Setup
+
+1. Open the backend folder.
+2. Run npm install.
+3. Configure environment variables in .env.
+4. Start the backend server using npm run dev.
