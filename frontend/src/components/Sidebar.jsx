@@ -1,0 +1,5 @@
+import React from 'react';
+import { Home, Compass, PlaySquare, Clock3, ThumbsUp, History, Flame, Music2, Gamepad2, Trophy, X } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+const groups=[[Home,'Home','/'],[Compass,'Explore','/explore'],[PlaySquare,'Subscriptions','/subscriptions'],[History,'History','/history'],[Clock3,'Watch later','/watch-later'],[ThumbsUp,'Liked videos','/liked'],[Flame,'Trending','/trending'],[Music2,'Music','#'],[Gamepad2,'Gaming','#'],[Trophy,'Sports','#']];
+export default function Sidebar({open,onClose}) { return <><div className={`sidebar-overlay ${open?'show':''}`} onClick={onClose}/><aside className={`sidebar ${open?'open':''}`}><button className="sidebar-close" onClick={onClose}><X size={20}/> Close</button>{groups.map(([Icon,label,to],i)=><NavLink key={label} to={to} onClick={onClose} className={({isActive})=>`side-item ${isActive&&to==='/'?'active':''} ${i===6?'section-start':''}`}><Icon size={21}/><span>{label}</span></NavLink>)}</aside></>; }

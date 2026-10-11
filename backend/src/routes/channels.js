@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import Channel from '../models/Channel.js';
+import Video from '../models/Video.js';
+import { protect } from '../middleware/auth.js';
+const router = Router();
+router.get('/mine', protect, async (req, res, next) => { try { const channel = await Channel.findOne({ owner: req.user.id }).populate('owner', 'username'); res.json({ channel }); } catch (e) { next(e); } });
+router.get('/:id', async (req, res, next) => { try { const channel = await Channel.findById(req.params.id).populate('owner', 'username'); if (!channel) return res.status(404).json({ message: 'Channel not found.' }); const videos = await Video.find({ channel: channel._id }).sort({ createdAt: -1 }); res.json({ channel, videos }); } catch (e) { next(e); } });
+router.post('/', protect, async (req, res, next) => { try { const existing = await Channel.findOne({ owner: req.user.id }); if (existing) return res.status(409).json({ message: 'You already have a channel.' }); const name = (req.body.channelName || '').trim(); if (name.length < 2) return res.status(400).json({ message: 'Channel name must contain at least 2 characters.' }); const channel = await Channel.create({ channelName: name, description: req.body.description || '', owner: req.user.id, channelBanner: req.body.channelBanner || '' }); res.status(201).json({ channel }); } catch (e) { next(e); } });
+router.patch('/:id', protect, async (req, res, next) => { try { const channel = await Channel.findOne({ _id: req.params.id, owner: req.user.id }); if (!channel) return res.status(404).json({ message: 'Channel not found or not yours.' }); if (req.body.channelName) channel.channelName = req.body.channelName.trim(); if (req.body.description !== undefined) channel.description = req.body.description; await channel.save(); res.json({ channel }); } catch (e) { next(e); } });
+export default router;
