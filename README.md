@@ -83,3 +83,4 @@ See [`docs/TESTING_CHECKLIST.md`](docs/TESTING_CHECKLIST.md) for manual tests. B
 - [ ] Screenshots and a short demo video prepared
 
 This project is a starter implementation for learning and must be run and tested in your own environment before submission. Verify video URLs and MongoDB configuration locally.
+project setup and testinig instructions.
